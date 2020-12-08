@@ -1,45 +1,62 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
+## Project Summary
 
-Welcome USER_NAME,
+# Design
+The goal of this project is to create a digital marketplace & auctioneering site, where users can browse, list, purchase, and review products.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+More specifically, the design for this site revolves around a combination digital marketplace and auction house, which will serve as another piece of interactive fiction, as per my first milestone project.
+The reason for this is fairly simple, it adds additional familiarity to the setting to allow for more naturalistic roleplaying, 
+can potentially serve as an extension of gameplay for tabletop RPGs using the setting, and finally could potentially provide story hooks for future plot events in the setting.
 
-## Gitpod Reminders
+To accomplish this, the site need to have a believable format, and the best way to accomplish this is to put a high-quality and professional-looking front on the site,
+along side responsive design elements to give a higher-budget feel to the site design.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+#### Target Users
+There are two primary groups of target users:
+- Those who will use the site to purchase goods and place bids.
+- Those who will use the site to sell goods and list auctions.
 
-`python3 -m http.server`
+#### Similar Sites/Competitors
+During the research portion of the design, I looked into sites for the same niche, so auctioneering sites. I have compiled a shortlist of three such sites, 
+in order to acertain the common design elements to each of these sites and make sure to implement them into the finished project.
 
-A blue button should appear to click: *Make Public*,
+[Ebay](https://www.ebay.co.uk/)
 
-Another blue button should appear to click: *Open Browser*.
+[The Sale Room](https://www.the-saleroom.com/en-gb)
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+[John Pye Auctions](https://www.johnpye.co.uk/)
 
-A blue button should appear to click: *Make Public*,
+In addition to these three sites, I have looked into digital marketplaces where set goods are sold, or where small businesses or sole traders can sell their products.
+Once again, I have looked for common design elements in these sites:
 
-Another blue button should appear to click: *Open Browser*.
+[Etsy](https://www.etsy.com/)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+[Amazon](https://www.amazon.co.uk/)
 
-## Updates Since The Instructional Video
+---
+#### Scope
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+In order for this project to be considered complete it must implement full CRUD functionality via front-end input & use the Stripe payment system to sell goods or services.
+It must do this as a multi-app django project featuring full use of javascript, python, html, css, and a relational database of some kind. Additionally, it must implement a user authentication
+ system of some sort, allowing users to log in and out, and have a good reason to allow this.
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+#### User Stories
+After the previous research stages, a set of user stories have been created. This was done in a spreadsheet not only to provide an easy viewing experience, but also to ease testing later down the line.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+[User Story Spreadsheet]()
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+---
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+### Skeleton
+From the above user stories, some prototype visual designs have been created to provide structure to future development and inform the layout of the DOM tree.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+[Wireframes]()
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+[Database Diagrams]()
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+#### Interface Design Ideas and Reasoning
+#### Program Navigation Charts
+#### HTML Structure Discussion?
 
---------
-
-Happy coding!
+### Surface
+#### Repeated Context Elements
+#### Colour Palette and Design Philosophy For Site
