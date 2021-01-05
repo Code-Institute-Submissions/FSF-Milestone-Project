@@ -51,12 +51,14 @@ From the above user stories, some prototype visual designs have been created to 
 
 [Wireframes]()
 
-[Database Diagrams]()
+### Database Diagram
+![Database Diagram](designs/wireframes/db_er_diagram_v1.png)
 
-#### Interface Design Ideas and Reasoning
-#### Program Navigation Charts
-#### HTML Structure Discussion?
+--- 
 
 ### Surface
-#### Repeated Context Elements
 #### Colour Palette and Design Philosophy For Site
+The main design philosophy for this site's visuals is to merge elements of the more modern minimalistic style of site design with the older content-heavy methods, in order to create a easily readable and clean style that shows as much content as possible without overloading the user and causing content to become visual noise.
+To that end, a higher-contrast colour palette has been chosen, in order to make the elements distinct.
+
+![Color Palette Swatch](designs/fsfpalette.png)
