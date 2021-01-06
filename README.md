@@ -42,7 +42,7 @@ It must do this as a multi-app django project featuring full use of javascript, 
 #### User Stories
 After the previous research stages, a set of user stories have been created. This was done in a spreadsheet not only to provide an easy viewing experience, but also to ease testing later down the line.
 
-[User Story Spreadsheet]()
+[User Story Spreadsheet](designs/fsf_userstories_v1.xlsx)
 
 ---
 
@@ -52,7 +52,7 @@ From the above user stories, some prototype visual designs have been created to 
 [Wireframes]()
 
 ### Database Diagram
-![Database Diagram](designs/wireframes/db_er_diagram_v1.png)
+![Database Diagram](designs/wireframes/database/db_er_diagram_v1.png)
 
 --- 
 
