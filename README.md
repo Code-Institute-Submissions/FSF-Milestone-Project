@@ -44,16 +44,16 @@ After the previous research stages, a set of user stories have been created. Thi
 ### Skeleton
 From the above user stories, some prototype visual designs have been created to provide structure to future development and inform the layout of the DOM tree.
 
-[Wireframe - Home Page](designs/wireframes/templates/Home.png)
-[Wireframe - Account Settings Page](designs/wireframes/templates/AccountSettings.png)
-[Wireframe - Account Orders Page](designs/wireframes/templates/AccountPage.png)
-[Wireframe - Item Page](designs/wireframes/templates/Item.png)
-[Wireframe - Products List Page](designs/wireframes/templates/Products.png)
-[Wireframe - Basket Page](designs/wireframes/templates/Basket.png)
-[Wireframe - Create Account Page](designs/wireframes/templates/CreateAccount.png)
-[Wireframe - Create Review Page](designs/wireframes/templates/CreateReview.png)
-[Wireframe - Checkout Page](designs/wireframes/templates/Checkout.png)
-[Wireframe - Acknowledge Page](designs/wireframes/templates/Acknowledgement.png)
+![Wireframe - Home Page](designs/wireframes/templates/Home.png)
+![Wireframe - Account Settings Page](designs/wireframes/templates/AccountSettings.png)
+![Wireframe - Account Orders Page](designs/wireframes/templates/AccountPage.png)
+![Wireframe - Item Page](designs/wireframes/templates/Item.png)
+![Wireframe - Products List Page](designs/wireframes/templates/Products.png)
+![Wireframe - Basket Page](designs/wireframes/templates/Basket.png)
+![Wireframe - Create Account Page](designs/wireframes/templates/CreateAccount.png)
+![Wireframe - Create Review Page](designs/wireframes/templates/CreateReview.png)
+![Wireframe - Checkout Page](designs/wireframes/templates/Checkout.png)
+![Wireframe - Acknowledge Page](designs/wireframes/templates/Acknowledgement.png)
 
 ### Database Diagram
 ![Database Diagram](designs/wireframes/database/db_er_diagram_v2.png)
