@@ -1,7 +1,7 @@
 ## Project Summary
 
 # Design
-The goal of this project is to create a digital marketplace & auctioneering site, where users can browse, list, purchase, and review products.
+The goal of this project is to create a digital marketplace & auctioneering site, where users can browse,  purchase, and review products.
 
 More specifically, the design for this site revolves around a combination digital marketplace and auction house, which will serve as another piece of interactive fiction, as per my first milestone project.
 The reason for this is fairly simple, it adds additional familiarity to the setting to allow for more naturalistic roleplaying, 
@@ -9,11 +9,6 @@ can potentially serve as an extension of gameplay for tabletop RPGs using the se
 
 To accomplish this, the site need to have a believable format, and the best way to accomplish this is to put a high-quality and professional-looking front on the site,
 along side responsive design elements to give a higher-budget feel to the site design.
-
-#### Target Users
-There are two primary groups of target users:
-- Those who will use the site to purchase goods and place bids.
-- Those who will use the site to sell goods and list auctions.
 
 #### Similar Sites/Competitors
 During the research portion of the design, I looked into sites for the same niche, so auctioneering sites. I have compiled a shortlist of three such sites, 
@@ -49,10 +44,19 @@ After the previous research stages, a set of user stories have been created. Thi
 ### Skeleton
 From the above user stories, some prototype visual designs have been created to provide structure to future development and inform the layout of the DOM tree.
 
-[Wireframes]()
+[Wireframe - Home Page](designs/wireframes/templates/Home.png)
+[Wireframe - Account Settings Page](designs/wireframes/templates/AccountSettings.png)
+[Wireframe - Account Orders Page](designs/wireframes/templates/AccountPage.png)
+[Wireframe - Item Page](designs/wireframes/templates/Item.png)
+[Wireframe - Products List Page](designs/wireframes/templates/Products.png)
+[Wireframe - Basket Page](designs/wireframes/templates/Basket.png)
+[Wireframe - Create Account Page](designs/wireframes/templates/CreateAccount.png)
+[Wireframe - Create Review Page](designs/wireframes/templates/CreateReview.png)
+[Wireframe - Checkout Page](designs/wireframes/templates/Checkout.png)
+[Wireframe - Acknowledge Page](designs/wireframes/templates/Acknowledgement.png)
 
 ### Database Diagram
-![Database Diagram](designs/wireframes/database/db_er_diagram_v1.png)
+![Database Diagram](designs/wireframes/database/db_er_diagram_v2.png)
 
 --- 
 
