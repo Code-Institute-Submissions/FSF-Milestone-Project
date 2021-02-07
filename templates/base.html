@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
@@ -11,7 +11,7 @@
     <title>Untitled Marketplace </title>
   </head>
   <body>
-    <header class="container">
+    <header class="container bg-warning m-0 mw-100">
         <div class="row justify-content-between">
             <div class="col-4">
                 <h1 class="align-middle">TITLE</h1>
@@ -25,9 +25,14 @@
             </div>
         </div>
     </header>
+    <nav class="container bg-success m-0 mw-100">
+        <div class="row justify-content-center">
+            <a href="#" class="col btn btn-sm">this is a test nav</a>
+        </div>
+    </nav>
     {% block content %}
     {% endblock %}
-    <footer class="container">
+    <footer class="position-absolute bottom-0 container bg-danger m-0 mw-100">
         <div class="row justify-content-between">
             <div class="col-4 text-center">generic copyright claim thing</div>
             <div class="col-4 text-center">social media goes here</div>
