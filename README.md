@@ -66,3 +66,8 @@ The main design philosophy for this site's visuals is to merge elements of the m
 To that end, a higher-contrast colour palette has been chosen, in order to make the elements distinct.
 
 ![Color Palette Swatch](designs/fsfpalette.png)
+
+### Credits
+
+Test book image - [pixabay](https://pixabay.com/vectors/book-paper-text-textbook-tome-2026267/)
+placeholder for missing images - [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Placeholder-image.png)

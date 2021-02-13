@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    {% if items %}
+        {% for item in items %}
+            {% include 'items/includes/itemcard.html' with item=item %}
+        {% endfor %}
+    {% else %}
+        <h2>Your search returned no results.</h2>
+    {% endif %}
+{% endblock %}
