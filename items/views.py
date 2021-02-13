@@ -10,11 +10,8 @@ def search(request):
     if request.GET:
         if request.GET.get('category'):
             categories = request.GET['category']
-            print(items)
-            items = items.filter(category__internal_name__in=categories)  # this is filtering out correct items, why?
-            print(items)
-            categories = Category.objects.filter(internal_name__in=categories)
-            print(categories)
+            items = items.filter(category__internal_name__in=categories)  # this is filtering out correct items as is the categories one.
+            categories = Category.objects.filter(internal_name__in=categories)  # possible/probably misuse of objects.filter
 
     context = {
         'items': items,
