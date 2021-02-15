@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="col-sm-5">
+    
+        <div class="col-sm-5">
+            <h3>{{item.name}}</h3>
+            purchase controls go here
+            <a href="#" class="btn-primary">add to cart</a>
+        </div>
+    </div>
+    <div class="row">
+        <p>
+            {{item.description}}
+        </p>
+    </div>
+</div>
+{% endblock %}

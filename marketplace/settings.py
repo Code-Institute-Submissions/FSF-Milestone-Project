@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'home',
     'items',
     'userprofiles',
+    'cart',
 
 ]
 
@@ -77,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.media',
+                'django.core.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
             ],
         },

@@ -4,7 +4,7 @@
         <div class="card-body">
             <h4 class="card-title">{{item.name}}</h4>
             <h5 class="card-text">{{item.base_price}}</h5>
-            {{item.category}}
         </div>
+        <a href="{% url 'item_page' item.id %}" class="btn btn-primary">View Item</a>
     </div>
 </div>
