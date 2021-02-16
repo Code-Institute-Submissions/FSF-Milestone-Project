@@ -2,6 +2,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from items.models import Item
 from math import trunc
+from decimal import Decimal
 
 
 #  adapted from the django tutorials, once again.
@@ -22,9 +23,8 @@ def cart_contents(request):
                 'quantity': item_data,
                 'item': item,
             })
-    delivery_cost = trunc((6+(6*(item_count))**.5)*10)  # gets the delivery cost in pennies.
-    delivery_cost = delivery_cost / 10  # at least, in theory.
-
+    delivery_cost = trunc((6+(6*(item_count))**.5)*100)  # gets the delivery cost in pennies?
+    delivery_cost = Decimal(delivery_cost)/100  # at least, in theory.
     grand_total = delivery_cost + total
 
     context = {

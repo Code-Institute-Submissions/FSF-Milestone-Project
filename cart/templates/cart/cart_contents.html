@@ -1,34 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="row">
+<div class="row justify-content-center">
+    <div class="col-10">
         <h2 class="col-2">Basket</h2>
-            {% if cart_items %}
-                {% for item in cart_items %}
-                <div class="row">
-                    <div class="col-3">
-                        <img src="{{item.image}}" alt="{{item.name}}">
-                    </div>
-                    <div class="col-3">
-                        <h2></h2>
-                    </div>
-                    <div class="col-3">
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <div class="row">Basket Total:£{{total}}</div>
-                        <div class="row">Delivery Cost:£{{deliver_cost}}</div>
-                        <div class="row">Total:£{{grand_total}}</div>
-                    </div>
-                    <div class="col-6">
-                        <a href="#" class="btn">Buy Now</a>
+        {% if cart_items %}
+            {% for entry in cart_items %}
+                {% with entry.item as item %}
+                    <div class="row justify-content-between">
+                        <div class="col-3">
+                            <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="col-sm-5 item-image">
+                        </div>
+                        <div class="col-3">
+                            <h2>{{item.name}}</h2>
+                        </div>
+                        <div class="col-3">
+                            <h4>{{item.base_price}}</h4>
+                        </div>
                     </div>
                     <hr>
+                {% endwith %}
+            {% endfor %}
+            <div class="row">           
+                <div class="col-6">
+                    <div class="row">Basket Total:£{{total}}</div>
+                    <div class="row">Delivery Cost:£{{delivery_cost}}</div>
+                    <div class="row">Total:£{{grand_total}}</div>
                 </div>
-                {% endfor %}
-            {% else %}
-            <h4>Your bag is currently empty.</h4>
-            {% endif %}
+                <div class="col-6">
+                    <a href="#" class="btn bg-green">Buy Now</a>
+                </div>                        
+            </div>
+        {% else %}
+        <h4>Your bag is currently empty.</h4>
+        {% endif %}
     </div>
+</div>
 {% endblock %}
