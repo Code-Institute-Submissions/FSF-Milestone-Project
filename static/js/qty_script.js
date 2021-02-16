@@ -1,5 +1,5 @@
 // this code taken from the codeinstitute Django tutorials
-function handleEnableDisable(itemId){
+function handleEnableDisable(itemId) {
     var currentValue = parseInt($(`#id_qty_${itemId}`).val());
     var minusDisabled = currentValue < 2;
     var plusDisabled = currentValue > 98;
@@ -13,12 +13,12 @@ for(var i = 0; i < allQtyInputs.length; i++){
     handleEnableDisable(itemId);
 }
 
-$('.qty_input').change(function(){
+$('.qty_input').change(function() {
     var itemId = $(this).data('item_id');
     handleEnableDisable(itemId);
 });
 
-$('.increment-qty').click(function(e){
+$('.increment-qty').click(function(e) {
     e.preventDefault();
     var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
     var currentValue = parseInt($(closestInput).val());
@@ -27,7 +27,7 @@ $('.increment-qty').click(function(e){
     handleEnableDisable(itemId);
 });
 
-$('.decrement-qty').click(function(e){
+$('.decrement-qty').click(function(e) {
     e.preventDefault();
     var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
     var currentValue = parseInt($(closestInput).val());
