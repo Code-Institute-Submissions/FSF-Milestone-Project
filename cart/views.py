@@ -41,7 +41,7 @@ def adjust_cart(request, item_id):
 
 
 def remove_from_cart(request, item_id):
-    item = get_object_or_404(Item, item_id)
+    item = get_object_or_404(Item, pk=item_id)
     cart = request.session.get('cart')
 
     cart.pop(item_id)
