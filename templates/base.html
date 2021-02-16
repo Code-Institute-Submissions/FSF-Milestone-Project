@@ -13,28 +13,30 @@
     <title>Untitled Marketplace </title>
   </head>
   <body>
-      <header class="container bg-warning m-0 mw-100">
+      <header class="container bg-white m-0 mw-100">
         <div class="row justify-content-between">
-          <div class="col-4">
-            <h1 class="align-middle">TITLE</h1>
+          <div class="col-4 bg-red">
+            <a class="bg-red btn" href=""><h1 class="align-middle">TITLE</h1></a>
           </div>
             <div class="col-4 row">
-              <a href="{% url 'view_cart' %}" class="col btn btn-lg rounded-0 text-uppercase">View Cart</a>
-              <a href="#" class="col btn btn-lg rounded-0 text-uppercase">test</a>
-              <a href="#" class="col btn btn-lg rounded-0 text-uppercase">test</a>
-              <a href="#" class="col btn btn-lg rounded-0 text-uppercase">test</a>
+              <a href="{% url 'view_cart' %}" class="col btn btn-lg rounded-0 text-uppercase bg-white">View Cart</a>
+              <a href="#" class="col btn btn-lg rounded-0 text-uppercase bg-green">test</a>
+              <a href="#" class="col btn btn-lg rounded-0 text-uppercase bg-yellow">test</a>
+              <a href="#" class="col btn btn-lg rounded-0 text-uppercase bg-red">test</a>
             </div>
           </div>
         </header>
-        <nav class="container bg-success m-0 mw-100">
+        <nav class="container bg-black m-0 mw-100">
           <div class="row justify-content-center">
-            <a href="{% url 'search' %}" class="col-1 btn btn-sm">All Books</a>
-            <a href="{% url 'search' %}?category=hist" class="col-1 btn btn-sm">History</a>
-            <a href="{% url 'search' %}?category=fict" class="col-1 btn btn-sm">Fiction</a>
+            <a href="{% url 'search' %}" class="col-1 bg-black btn btn-sm">All Books</a>
+            <a href="{% url 'search' %}?category=hist" class="col-1 bg-black btn btn-sm">History</a>
+            <a href="{% url 'search' %}?category=fict" class="col-1 bg-black btn btn-sm">Fiction</a>
           </div>
         </nav>
+        <div class="container-fluid vh-100 bg-white">
         {% block content %}
         {% endblock %}
+        </div>
         <footer class="position-absolute bottom-0 container bg-danger m-0 mw-100">
           <div class="row justify-content-between">
             <div class="col-4 text-center">generic copyright claim thing</div>

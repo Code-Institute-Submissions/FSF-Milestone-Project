@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="container">
     <div class="row">
         <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="col-sm-5">
     
@@ -46,9 +45,8 @@
             {{item.description}}
         </p>
     </div>
-</div>
 {% endblock %}
 {% block postJS %}
 {{block.super}}
-    <script src="{% static 'js/qty_script.js' %}"></script>
+<!--<script src="{% static 'js/qty_script.js' %}"></script>-->
 {% endblock %}

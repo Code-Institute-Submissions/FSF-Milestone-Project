@@ -21,5 +21,6 @@ def add_to_cart(request, item_id):
     # Same with the drop-downs on the menu n stuff, actually.
 
     request.session['bag'] = bag
+    print(bag)
 
     return redirect(redirect_URL)
