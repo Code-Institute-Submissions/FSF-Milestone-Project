@@ -33,5 +33,4 @@ def cart_contents(request):
         'delivery_cost': delivery_cost,
         'grand_total': grand_total,
     }
-    print(context)
     return context

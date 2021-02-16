@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-10">
@@ -7,14 +8,38 @@
             {% for entry in cart_items %}
                 {% with entry.item as item %}
                     <div class="row justify-content-between">
-                        <div class="col-3">
+                        <div class="col-2">
                             <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="col-sm-5 item-image">
                         </div>
-                        <div class="col-3">
+                        <div class="col-2">
                             <h2>{{item.name}}</h2>
                         </div>
-                        <div class="col-3">
+                        <div class="col-2 text-end">
                             <h4>{{item.base_price}}</h4>
+                        </div>
+                        <div class="col-2 text-end">
+                            <form class="form update-form" action="{% url 'adjust_cart' item.id %}" method="POST">
+                                {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <button class="decrement-qty btn" data-item_id="{{item.id}}" id="dec-qty_{{item.id}}">
+                                                    <span class="icon">
+                                                        <i class="fas fa-minus"></i>
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <input type="text" class="form-control qty_input" name="quantity" value="{{entry.quantity}}" min="1" max="99" id="id_qty_{{ item.id }}" data-item_id="{{item.id}}">
+                                            <div class="input-group-append">
+                                                <button class="increment-qty btn" data-item_id="{{item.id}}" id="increment-qty_{{item.id}}">
+                                                    <span class="icon">
+                                                        <i class="fas fa-plus"></i>
+                                                    </span>
+                                                </button>
+                                            </div>  
+                                        </div>
+                                    </div>
+                            </form>
                         </div>
                     </div>
                     <hr>
@@ -35,4 +60,9 @@
         {% endif %}
     </div>
 </div>
+{% endblock %}
+{% block postJS %}
+{{ block.super }}
+    <script src="{% static 'js/cart_script.js' %}"></script>
+    <script src="{% static 'js/qty_script.js' %}"></script>
 {% endblock %}

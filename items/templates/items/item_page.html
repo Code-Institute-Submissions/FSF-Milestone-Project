@@ -13,7 +13,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <button class="dect-qty btn" data-item_id="{{item.id}}" id="dec-qty_{{item.id}}">
+                                <button class="decrement-qty btn" data-item_id="{{item.id}}" id="decrement-qty_{{item.id}}">
                                     <span class="icon">
                                         <i class="fas fa-minus"></i>
                                     </span>
@@ -21,7 +21,7 @@
                             </div>
                             <input type="text" class="form-control qty_input" name="quantity" value="1" min="1" max="99" id="id_qty_{{ item.id }}" data-item_id="{{item.id}}">
                             <div class="input-group-append">
-                                <button class="inc-qty btn" data-item_id="{{item.id}}" id="inc-qty_{{item.id}}">
+                                <button class="increment-qty btn" data-item_id="{{item.id}}" id="increment-qty_{{item.id}}">
                                     <span class="icon">
                                         <i class="fas fa-plus"></i>
                                     </span>
@@ -48,5 +48,5 @@
 {% endblock %}
 {% block postJS %}
 {{block.super}}
-<!--<script src="{% static 'js/qty_script.js' %}"></script>-->
+<script src="{% static 'js/qty_script.js' %}"></script>
 {% endblock %}
