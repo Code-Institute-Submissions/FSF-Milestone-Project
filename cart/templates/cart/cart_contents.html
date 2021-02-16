@@ -30,7 +30,7 @@
                                                     </span>
                                                 </button>
                                             </div>
-                                            <input type="text" class="form-control qty_input" name="quantity" value="{{entry.quantity}}" min="1" max="99" id="id_qty_{{ item.id }}" data-item_id="{{item.id}}">
+                                            <input type="number" class="form-control qty_input" name="quantity" value="{{entry.quantity}}" min="1" max="99" id="id_qty_{{ item.id }}" data-item_id="{{item.id}}">
                                             <div class="input-group-append">
                                                 <button class="increment-qty btn" data-item_id="{{item.id}}" id="increment-qty_{{item.id}}">
                                                     <span class="icon">
@@ -41,6 +41,8 @@
                                         </div>
                                     </div>
                             </form>
+                            <a class="update-link" href="#">Update</a>
+                            <a href="#" class="remove-item" id="remove_{{item.item_id}}">Remove</a>
                         </div>
                     </div>
                     <hr>
