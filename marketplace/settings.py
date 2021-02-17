@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&ck&pkka%fdh+@99aj6r7%dn19rn8s5goc7td2=h(6%j_xdr5e'
+SECRET_KEY = os.getenv('DJANGO_SECRET')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -88,7 +88,7 @@ TEMPLATES = [
     },
 ]
 
-AUTHENTICATION_BACKENDS = [ # copied from allauth docs
+AUTHENTICATION_BACKENDS = [  # copied from allauth docs
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
