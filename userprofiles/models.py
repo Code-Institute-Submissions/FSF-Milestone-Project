@@ -11,10 +11,10 @@ class UserProfile(models.Model):
     first_name = models.CharField(max_length=30, blank=True)
     second_name = models.CharField(max_length=30, blank=True)
     country = CountryField(blank_label="Choose Country *", blank=True)
-    county = models.CharField(max_length=60)
+    county = models.CharField(max_length=60, blank=True)
     town_city = models.CharField(max_length=30)
-    address1 = models.CharField(max_length=80)
-    address2 = models.CharField(max_length=80)
+    address1 = models.CharField(max_length=80, blank=False)
+    address2 = models.CharField(max_length=80, blank=True)
     postcode = models.CharField(max_length=20)
 
     def __str__(self):
