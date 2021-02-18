@@ -84,6 +84,10 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'cart.context.cart_contents',
             ],
+            'builtins':[
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -165,4 +169,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Crispy Forms Integration
 
-CRISPY_TEMPLATE_PACK = 'bootstrap'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
