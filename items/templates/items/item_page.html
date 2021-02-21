@@ -2,11 +2,13 @@
 {% load static %}
 {% block content %}
     <div class="row justify-content-around page-top">
+        <div class="row">
+            <h2 class="title">{{item.name}}</h2>
+        </div>
         <div class="col-sm-3 m-auto">
             <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="item-page-image">
         </div>
         <div class="col-sm-5">
-            <h3>{{ item.name }}</h3>
             <strong>£{{ item.base_price }}</strong>
             <form class="form" action="{% url 'add_to_cart' item.id %}" method="POST">
                 {% csrf_token %}
