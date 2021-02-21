@@ -16,13 +16,13 @@ class Order(models.Model):
 #   user = models.ForeignKey('userprofiles.UserProfile',
 #                            on_delete=models.SET_NULL, null=True,
 #                           related_name='orders')
-    full_name = models.CharField(max_length=30, blank=True)
-    email = models.EmailField(max_length=30, blank=True)
+    full_name = models.CharField(max_length=30, blank=False)
+    email = models.EmailField(max_length=30, blank=False)
     phone = models.CharField(max_length=30, blank=True)
-    country = models.CharField(max_length=30, blank=True)
+    country = models.CharField(max_length=30, blank=False)
     county = models.CharField(max_length=30, blank=True)
-    city = models.CharField(max_length=30, blank=True)
-    postcode = models.CharField(max_length=30, blank=True)
+    city = models.CharField(max_length=30, blank=False)
+    postcode = models.CharField(max_length=30, blank=False)
     address_line1 = models.CharField(max_length=30, blank=False)
     address_line2 = models.CharField(max_length=30, blank=True)
     date = models.DateTimeField(auto_now_add=True)
