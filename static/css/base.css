@@ -1,3 +1,9 @@
+/*set html & body height to 100% to ensure footer works right*/
+html, body{
+    height:100%
+}
+
+
 /* colours */
 .bg-white{
     background-color: #fffafa!important;
@@ -32,4 +38,9 @@
 /* item page - will seperate into own file when refactoring */
 .item-page-image{
     max-width: 20vw;
+}
+
+/* forms */
+.form-group{
+    margin-bottom: 5px;
 }
