@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="row h-100">
-        <div class="col-2 float-lg-start bg-secondary">
+<div class="row vh-100">
+        <div class="col-2 float-lg-start bg-secondary page-top">
+            Controls and filters will go here once the main functionality is finished, they're (mostly) already implemented, after all.
         </div>
-        <div class="col-10 float-lg-end">
+        <div class="col-10 float-lg-end page-top">
             {% if items %}
                 {% for item in items %}
                     {% include 'items/includes/itemcard.html' with item=item %}

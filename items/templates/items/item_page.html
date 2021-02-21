@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <div class="row">
-        <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="col-sm-5">
-    
+    <div class="row justify-content-around page-top">
+        <div class="col-sm-3 m-auto">
+            <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="item-page-image">
+        </div>
         <div class="col-sm-5">
             <h3>{{ item.name }}</h3>
             <strong>£{{ item.base_price }}</strong>

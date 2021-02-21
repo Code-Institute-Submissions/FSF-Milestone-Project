@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <div class="row">
+    <div class="row page-top">
         <div class="col-7">
             <h2>
                 This is a test title
@@ -10,8 +10,21 @@
                 This is a test description for the landing page news
             </p>
         </div>
-
     </div>
-<div class="container"></div>
-<div class="container"></div>
+    <hr>
+    <div class="row">
+        {% for item in popular_items %}
+            {% include 'items/includes/itemcard.html' with item=item %}
+        {% endfor %}
+    </div>
+    <hr>
+    <div class="row">
+        {% if sales %}
+            {% for sale in sales %}
+
+            {% endfor %}
+        {% else %}
+            There's no sales right now, but check again soon!
+        {% endif %}
+    </div>
 {% endblock %}

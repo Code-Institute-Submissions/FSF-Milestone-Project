@@ -23,3 +23,13 @@
     background-color: #8ed24b!important;
     color: #100e00!important;
 }
+/* fonts */
+
+/* positionings */
+.page-top{
+    padding:30px 15px 0 15px;
+}
+/* item page - will seperate into own file when refactoring */
+.item-page-image{
+    max-width: 20vw;
+}
