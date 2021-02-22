@@ -7,29 +7,50 @@
         <h2 class="title">Purchase Complete!</h2>
     </div>
     <div class="row"><p>Thank you for your purchase, a confirmation email will be sent to {{order.email}}<br>Your order details are below. </p></div>
-    <!-- going to have a horizontal rule between these two. -->
     <div class="row">
-        <div class="col-md-8 checkout-items">
-            Order Summary
-                {% for entry in cart_items %}
-                    {% with entry.item as item %}
-                        <div class="row justify-content-between">
-                            <div class="col-3">
-                                <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="col-sm-5 item-image">
+        <div class="col-3">
+            <h4 class="title">Order Info</h4>
+            <p><strong>Order Number</strong> {{order.order_no}}<br></p>
+            <p><strong>Shipping Address</strong></p>
+            <div class="ml-1">
+                {{order.full_name}}<br>
+                {{order.address_line1}}<br>
+                {% if order.address_line2 %} 
+                    {{order.address_line2}}<br>
+                {% endif %}
+                {{order.postcode}}<br>
+                {{order.city}}<br>
+                {% if order.county %} 
+                    {{order.county}}<br>
+                {% endif %}
+                {{order.country}}<br>
+            </div>
+        </div>
+        <div class="col-9">
+            <h4 class="title">Order Summary</h4>
+            <div class="order-items">
+                    {% for orderitem in order.order_items.all %}
+                            <div class="row justify-content-between">
+                                <div class="col-3">
+                                    <img src="{{MEDIA_URL}}{% if orderitem.item.image %}{{ orderitem.item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ orderitem.item.name }}" class="col-sm-5 item-image">
+                                </div>
+                                <div class="col-3">
+                                    <strong>{{orderitem.item.name}}</strong>
+                                </div>
+                                <div class="col-3 text-end">
+                                    <strong>{{orderitem.quantity}}</strong><!--to be replaced with lineitem total-->
+                                </div>
+                                <div class="col-3 text-end">
+                                    <strong>{{orderitem.order_item_total}}</strong>
+                                </div>
                             </div>
-                            <div class="col-3">
-                                <strong>{{item.name}}</strong>
-                            </div>
-                            <div class="col-3 text-end">
-                                <strong>{{item.base_price}}</strong>
-                            </div>
-                            <div class="col-3 text-end">
-                                <strong>{{entry.quantity}}</strong>
-                            </div>
-                        </div>
-                        <hr>
-                    {% endwith %}
-                {% endfor %}
+                    {% endfor %}
+                <div>
+                    <div class="row text-muted justify-content-end font-weight-light mb-3"><div class="col-2">Basket Total:</div><p class="font-weight-bold col-2 float-right">£{{total}}</p></div>
+                    <div class="row text-muted justify-content-end  font-weight-light mb-3"><div class="col-2">Delivery Cost:</div><p class="font-weight-bold col-2 float-right">£{{delivery_cost}}</p></div>
+                    <div class="row justify-content-end  mb-3"><strong class="col-2">Total:</strong><p class=" col-2 float-right">£{{grand_total}}</p></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

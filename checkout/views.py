@@ -32,12 +32,12 @@ def checkout(request):
             order = order_form.save()
             for item_id, item_data in cart.items():
                 item = get_object_or_404(Item, pk=item_id)
-                line_item = OrderItem(
+                order_item = OrderItem(
                     order=order,
                     item=item,
                     quantity=item_data
                 )
-                line_item.save()
+                order_item.save()
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse('success', args=[order.order_no]))
 
