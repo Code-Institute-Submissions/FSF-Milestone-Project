@@ -15,7 +15,10 @@ def cart_contents(request):
 
     for item_id, item_data in cart.items():
         item = get_object_or_404(Item, pk=item_id)
-        total += item_data * item.base_price  # I am ABSOLUTELY going to need to include discount stuff from sales here.
+        if item.sale_price:
+            total += item_data * item.sale_price
+        else:
+            total += item_data * item.base_price
         item_count += item_data
         cart_items.append({
             'item_id': item_id,

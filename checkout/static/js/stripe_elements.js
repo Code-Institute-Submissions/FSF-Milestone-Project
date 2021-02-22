@@ -27,6 +27,8 @@ form.addEventListener('submit', function(ev){
     ev.preventDefault(); //stops default action, so script can do it's thing.
     card.update({ 'disabled': true}); // disables card and submit button when clicked, to prevent multiple submissions.
     $('#submit-button').attr('disabled', true);
+    $('#payment-form').fadeToggle(100);
+    $('#loading-overlay').fadeToggle(100);
     stripe.confirmCardPayment(client_secret,{
         payment_method:{
             card: card,
@@ -38,6 +40,8 @@ form.addEventListener('submit', function(ev){
                     <i class="fas fas-times"></i>
                 </span>
                 <span>${result.error.message}</span>`)
+            $('#payment-form').fadeToggle(100);
+            $('#loading-overlay').fadeToggle(100);
             card.update({'disabled':false});
             $('#submit-button').attr('disabled', false);
         }

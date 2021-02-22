@@ -3,7 +3,13 @@
         <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="card-img-top img-thumbnail">
         <div class="card-body">
             <h4 class="card-title">{{item.name}}</h4>
-            <h5 class="card-text">{{item.base_price}}</h5>
+            <h5 class="card-text">
+                {% if item.sale_price %}
+                    {{item.sale_price}}
+                {% else %}
+                    {{item.base_price}}
+                {% endif %}
+            </h5>
         </div>
         <a href="{% url 'item_page' item.id %}" class="btn btn-primary">View Item</a>
     </div>

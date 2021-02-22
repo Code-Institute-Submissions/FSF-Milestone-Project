@@ -18,7 +18,13 @@
                             <h2>{{item.name}}</h2>
                         </div>
                         <div class="col-3 text-end">
-                            <h4>{{item.base_price}}</h4>
+                            <h4>£
+                                {% if item.sale_price %}
+                                    {{item.sale_price}}
+                                {% else %}
+                                    {{ item.base_price }}
+                                {% endif %}
+                            </h4>
                         </div>
                         <div class="col-3 text-end">
                             <form class="form update-form" action="{% url 'adjust_cart' item.id %}" method="POST">
@@ -50,13 +56,13 @@
                     <hr>
                 {% endwith %}
             {% endfor %}
-            <div class="row">           
-                <div class="col-6">
-                    <div class="row">Basket Total:£{{total}}</div>
-                    <div class="row">Delivery Cost:£{{delivery_cost}}</div>
-                    <div class="row">Total:£{{grand_total}}</div>
+            <div class="row justify-content-between">           
+                <div class="col-4">
+                    <div class="row justify-content-between text-muted font-weight-light mb-3"><div class="col-2">Basket Total:</div><p class="font-weight-bold col-2 float-right">£{{total}}</p></div>
+                    <div class="row justify-content-between text-muted font-weight-light mb-3"><div class="col-2">Delivery Cost:</div><p class="font-weight-bold col-2 float-right">£{{delivery_cost}}</p></div>
+                    <div class="row justify-content-between mb-3"><strong class="col-2">Total:</strong><p class=" col-2 float-right">£{{grand_total}}</p></div>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                     <a href="{% url 'checkout' %}" class="btn bg-green">Buy Now</a>
                 </div>                        
             </div>
@@ -75,9 +81,10 @@
 })
 
 $('.remove-item').click(function(e){
+    var csrfToken = "{{ csrf_token }}"
     var itemId = $(this).attr('id').split('remove_')[1];
     var url = `/cart/remove/${itemId}/`;
-    var data = {'csrfmiddlewaretoken': csrftoken}; //changed this, django provides a csrftoken variable to js.
+    var data = {'csrfmiddlewaretoken':  csrfToken}; //changed this, django provides a csrftoken variable to js.
 
     $.post(url,data)
     .done(function(){

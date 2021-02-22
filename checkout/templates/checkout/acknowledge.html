@@ -46,9 +46,9 @@
                             </div>
                     {% endfor %}
                 <div>
-                    <div class="row text-muted justify-content-end font-weight-light mb-3"><div class="col-2">Basket Total:</div><p class="font-weight-bold col-2 float-right">£{{total}}</p></div>
-                    <div class="row text-muted justify-content-end  font-weight-light mb-3"><div class="col-2">Delivery Cost:</div><p class="font-weight-bold col-2 float-right">£{{delivery_cost}}</p></div>
-                    <div class="row justify-content-end  mb-3"><strong class="col-2">Total:</strong><p class=" col-2 float-right">£{{grand_total}}</p></div>
+                    <div class="row text-muted justify-content-end font-weight-light mb-3"><div class="col-2">Basket Total:</div><p class="font-weight-bold col-2 float-right">£{{order.order_total}}</p></div>
+                    <div class="row text-muted justify-content-end  font-weight-light mb-3"><div class="col-2">Delivery Cost:</div><p class="font-weight-bold col-2 float-right">£{{order.delivery_total}}</p></div>
+                    <div class="row justify-content-end  mb-3"><strong class="col-2">Total:</strong><p class=" col-2 float-right">£{{order.grand_total}}</p></div>
                 </div>
             </div>
         </div>

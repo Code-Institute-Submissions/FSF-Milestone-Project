@@ -66,7 +66,10 @@ class OrderItem(models.Model):
                                            editable=False)
 
     def save(self, *args, **kwargs):
-        self.order_item_total = self.item.base_price * self.quantity
+        if self.item.sale_price:
+            self.order_item_total = self.item.sale_price * self.quantity
+        else:
+            self.order_item_total = self.item.base_price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
