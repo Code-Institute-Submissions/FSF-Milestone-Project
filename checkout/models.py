@@ -12,7 +12,7 @@ from items.models import Item
 
 # Create your models here.
 class Order(models.Model):
-    order_id = models.CharField(max_length=32, editable=False)
+    order_no = models.CharField(max_length=32, editable=False)
 #   user = models.ForeignKey('userprofiles.UserProfile',
 #                            on_delete=models.SET_NULL, null=True,
 #                           related_name='orders')
@@ -35,11 +35,11 @@ class Order(models.Model):
     grand_total = models.DecimalField(max_digits=10,
                                       decimal_places=2, null=False, default=0)
 
-    def _generate_order_id(self):
+    def _generate_order_no(self):
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
-        self.order_total = self.order_items.aggregate(Sum('order_item_total'))['order_item_total__sum']
+        self.order_total = self.order_items.aggregate(Sum('order_item_total'))['order_item_total__sum'] or 0
         item_count = self.order_items.count()
         delivery_cost = trunc((6+(6*(item_count))**.5)*100)
         self.delivery_total = Decimal(delivery_cost)/100
@@ -47,12 +47,12 @@ class Order(models.Model):
         self.save()
 
     def save(self, *args, **kwargs):
-        if not self.order_id:
-            self.order_id = self._generate_order_id()
+        if not self.order_no:
+            self.order_no = self._generate_order_no()
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.order_id
+        return self.order_no
 
 
 class OrderItem(models.Model):
@@ -70,4 +70,4 @@ class OrderItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'Item {self.item.name} on order {self.order.order_id}'
+        return f'Item {self.item.name} on order {self.order.order_no}'

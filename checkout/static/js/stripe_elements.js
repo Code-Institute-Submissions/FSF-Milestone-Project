@@ -18,7 +18,7 @@ card.addEventListener('change', function(event){
                 <span>${event.error.message}</span>`)}
     else{
         $('#card-errors').html('');
-    };
+    }
 });
 
 var form = document.getElementById('payment-form')
@@ -37,7 +37,7 @@ form.addEventListener('submit', function(ev){
                 <span class="icon" role="alert">
                     <i class="fas fas-times"></i>
                 </span>
-                <span>${event.error.message}</span>`)
+                <span>${result.error.message}</span>`)
             card.update({'disabled':false});
             $('#submit-button').attr('disabled', false);
         }

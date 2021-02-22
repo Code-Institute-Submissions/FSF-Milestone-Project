@@ -1,0 +1,36 @@
+<!--Another template based off of the django tutorial code-->
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="row justify-content-center page-top">
+    <div class="row">
+        <h2 class="title">Purchase Complete!</h2>
+    </div>
+    <div class="row"><p>Thank you for your purchase, a confirmation email will be sent to {{order.email}}<br>Your order details are below. </p></div>
+    <!-- going to have a horizontal rule between these two. -->
+    <div class="row">
+        <div class="col-md-8 checkout-items">
+            Order Summary
+                {% for entry in cart_items %}
+                    {% with entry.item as item %}
+                        <div class="row justify-content-between">
+                            <div class="col-3">
+                                <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="col-sm-5 item-image">
+                            </div>
+                            <div class="col-3">
+                                <strong>{{item.name}}</strong>
+                            </div>
+                            <div class="col-3 text-end">
+                                <strong>{{item.base_price}}</strong>
+                            </div>
+                            <div class="col-3 text-end">
+                                <strong>{{entry.quantity}}</strong>
+                            </div>
+                        </div>
+                        <hr>
+                    {% endwith %}
+                {% endfor %}
+        </div>
+    </div>
+</div>
+{%endblock%}
