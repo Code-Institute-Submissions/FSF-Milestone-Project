@@ -5,6 +5,7 @@ from decimal import Decimal
 
 from django.db import models
 from django.db.models import Sum
+from django_countries.fields import CountryField
 
 from userprofiles.models import UserProfile
 from items.models import Item
@@ -13,13 +14,10 @@ from items.models import Item
 # Create your models here.
 class Order(models.Model):
     order_no = models.CharField(max_length=32, editable=False)
-#   user = models.ForeignKey('userprofiles.UserProfile',
-#                            on_delete=models.SET_NULL, null=True,
-#                           related_name='orders')
     full_name = models.CharField(max_length=30, blank=False)
     email = models.EmailField(max_length=30, blank=False)
     phone = models.CharField(max_length=30, blank=True)
-    country = models.CharField(max_length=30, blank=False)
+    country = CountryField(blank_label="Choose Country *", blank=True)
     county = models.CharField(max_length=30, blank=True)
     city = models.CharField(max_length=30, blank=False)
     postcode = models.CharField(max_length=30, blank=False)
@@ -34,6 +32,8 @@ class Order(models.Model):
                                       default=0)
     grand_total = models.DecimalField(max_digits=10,
                                       decimal_places=2, null=False, default=0)
+    stripe_pid = models.CharField(max_length=254,
+                                  null=False, blank=False, default='')
 
     def _generate_order_no(self):
         return uuid.uuid4().hex.upper()

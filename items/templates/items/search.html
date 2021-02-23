@@ -11,14 +11,21 @@
     
     <div class="col-10 float-lg-end page-top">
     <div class="row">
-        <h2 class="title-font">Items: (change this to show search terms)</h2>
+        <h2 class="title-font">
+            {% if category %}
+                {% for category in category %}
+                    {{category.name}}
+                {% endfor %}
+            {% else %}
+                All Books
+            {% endif %}</h2>
     </div>
         {% if items %}
             {% for item in items %}
                 {% include 'items/includes/itemcard.html' with item=item %}
             {% endfor %}
         {% else %}
-            <h2>Your search returned no results.</h2>
+            <h2 class="body-font">Your search returned no results.</h2>
         {% endif %}
     </div>
 </div>
