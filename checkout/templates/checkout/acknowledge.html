@@ -4,15 +4,15 @@
 {% block content %}
 <div class="row justify-content-center page-top">
     <div class="row">
-        <h2 class="title">Purchase Complete!</h2>
+        <h2 class="title-font">Purchase Complete!</h2>
     </div>
-    <div class="row"><p>Thank you for your purchase, a confirmation email will be sent to {{order.email}}<br>Your order details are below. </p></div>
+    <div class="row body-font"><p>Thank you for your purchase, a confirmation email will be sent to {{order.email}}<br>Your order details are below. </p></div>
     <div class="row">
         <div class="col-3">
-            <h4 class="title">Order Info</h4>
-            <p><strong>Order Number</strong> {{order.order_no}}<br></p>
-            <p><strong>Shipping Address</strong></p>
-            <div class="ml-1">
+            <h4 class="title-font">Order Info</h4>
+            <p class="body-font"><strong class="title-font">Order Number</strong> {{order.order_no}}<br></p>
+            <p class="body-font"><strong class="title-font">Shipping Address</strong></p>
+            <div class="ml-1 body-font">
                 {{order.full_name}}<br>
                 {{order.address_line1}}<br>
                 {% if order.address_line2 %} 
@@ -27,28 +27,28 @@
             </div>
         </div>
         <div class="col-9">
-            <h4 class="title">Order Summary</h4>
+            <h4 class="title-font">Order Summary</h4>
             <div class="order-items">
                     {% for orderitem in order.order_items.all %}
                             <div class="row justify-content-between">
                                 <div class="col-3">
                                     <img src="{{MEDIA_URL}}{% if orderitem.item.image %}{{ orderitem.item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ orderitem.item.name }}" class="col-sm-5 item-image">
                                 </div>
-                                <div class="col-3">
+                                <div class="col-3 title-font">
                                     <strong>{{orderitem.item.name}}</strong>
                                 </div>
-                                <div class="col-3 text-end">
+                                <div class="col-3 text-end title-font">
                                     <strong>{{orderitem.quantity}}</strong><!--to be replaced with lineitem total-->
                                 </div>
-                                <div class="col-3 text-end">
+                                <div class="col-3 text-end title-font">
                                     <strong>{{orderitem.order_item_total}}</strong>
                                 </div>
                             </div>
                     {% endfor %}
                 <div>
-                    <div class="row text-muted justify-content-end font-weight-light mb-3"><div class="col-2">Basket Total:</div><p class="font-weight-bold col-2 float-right">£{{order.order_total}}</p></div>
-                    <div class="row text-muted justify-content-end  font-weight-light mb-3"><div class="col-2">Delivery Cost:</div><p class="font-weight-bold col-2 float-right">£{{order.delivery_total}}</p></div>
-                    <div class="row justify-content-end  mb-3"><strong class="col-2">Total:</strong><p class=" col-2 float-right">£{{order.grand_total}}</p></div>
+                    <div class="row text-muted justify-content-end body-font  font-weight-light mb-3"><div class="col-2">Basket Total:</div><p class="font-weight-bold col-2 float-right">£{{order.order_total}}</p></div>
+                    <div class="row text-muted justify-content-end body-font font-weight-light mb-3"><div class="col-2">Delivery Cost:</div><p class="font-weight-bold col-2 float-right">£{{order.delivery_total}}</p></div>
+                    <div class="row justify-content-end body-font mb-3"><strong class="col-2">Total:</strong><p class=" col-2 float-right">£{{order.grand_total}}</p></div>
                 </div>
             </div>
         </div>

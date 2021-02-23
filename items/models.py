@@ -2,6 +2,7 @@ from django.db import models
 
 from decimal import Decimal
 
+
 class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
@@ -35,7 +36,7 @@ class Item(models.Model):
 
     def update_sale_price(self, discount, isCreated):
         decimal_corrector = Decimal('0.01')
-        if isCreated == True:
+        if isCreated is True:
             self.sale_price = Decimal(self.base_price*(100 - discount)/100).quantize(decimal_corrector)
         else:
             self.sale_price = None
@@ -47,7 +48,7 @@ class Sale(models.Model):
     category = models.ForeignKey('Category',
                                  on_delete=models.SET_NULL,
                                  null=True, related_name='sale')
-    name = models.CharField(max_length=30, blank=True)
+    name = models.CharField(max_length=30)
     description = models.TextField(blank=True)
     discount_amount = models.DecimalField(max_digits=10, decimal_places=0,
                                           blank=False, null=False)
