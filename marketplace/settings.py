@@ -158,6 +158,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Message stuff for toasts
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 

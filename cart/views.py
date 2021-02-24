@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from items.models import Item
+from django.contrib import messages
 
 
 def view_cart(request):
@@ -20,7 +21,7 @@ def add_to_cart(request, item_id):
     # Same with the drop-downs on the menu n stuff, actually.
 
     request.session['cart'] = cart
-
+    messages.success(request, f'{quantity} x {item.name}(s) added to cart')
     return redirect(redirect_URL)
 
 
@@ -47,5 +48,5 @@ def remove_from_cart(request, item_id):
     cart.pop(item_id)
 
     request.session['cart'] = cart
-
+    messages.success(request, f'Removed {item.name} from cart.')
     return redirect(reverse('view_cart'))

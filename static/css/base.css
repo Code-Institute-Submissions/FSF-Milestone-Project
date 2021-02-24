@@ -23,13 +23,18 @@ html, body{
 }
 
 .bg-yellow{
-    background-color: #f7ce5b!important;
-    color: #100e00!important;
+    background-color: #ebad03!important;
+    color: #fffafa!important;
 }
 
 .bg-green{
     background-color: #8ed24b!important;
-    color: #100e00!important;
+    color: #fffafa!important;
+}
+
+.bg-purple{
+    background-color: #954bd2!important;
+    color: #fffafa!important;
 }
 
 /* fonts */
@@ -56,6 +61,17 @@ html, body{
     margin-bottom: 5px;
 }
 
+select,
+select option{
+    background-color: #fffafa!important;
+    color: #100e00!important;
+}
+
+select:invalid,
+select option[value=""]{
+    color:#100e0057!important;
+}
+
 /* checkout */
 #loading-overlay{
     display: none;
@@ -64,7 +80,7 @@ html, body{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(241, 81, 82, .85);
+    background: #f15152d9;
     z-index: 9999;
 }
 
@@ -74,4 +90,12 @@ html, body{
     justify-content: center;
     margin: 0;
     height: 100%
+}
+
+/* toasts */
+.toast{
+    position: absolute;
+    top:3vh;
+    right:3vw;
+    z-index:999999;
 }

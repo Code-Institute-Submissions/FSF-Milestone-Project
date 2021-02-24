@@ -35,11 +35,15 @@ class Item(models.Model):
         return self.name
 
     def update_sale_price(self, discount, isCreated):
-        decimal_corrector = Decimal('0.01')
         if isCreated is True:
-            self.sale_price = Decimal(self.base_price*(100 - discount)/100).quantize(decimal_corrector)
+            self.sale_price = round(self.base_price*(100 - discount)/100, 2)
+            print(self.sale_price)
         else:
             self.sale_price = None
+        self.save()
+
+    def update_score(self, score):
+        self.average_rating = score
         self.save()
 
 
@@ -55,14 +59,15 @@ class Sale(models.Model):
 
     def save(self, *args, **kwargs):
         items = self.category.items.all()
+        discount = self.discount_amount
         for item in items:
-            item.update_sale_price(self.discount_amount, True)
+            item.update_sale_price(discount, True)
         super(Sale, self).save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
         items = self.category.items.all()
         for item in items:
-            item.update_sale_price('', False)
+            item.update_sale_price(0, False)
         super(Sale, self).delete(*args, **kwargs)
 
     def __str__(self):

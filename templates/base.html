@@ -20,10 +20,17 @@
             <a class="bg-red btn" href="{% url 'home' %}"><h1 class="align-middle">Morland's Bookshop</h1></a>
           </div>
             <div class="col-4 row">
-              <a href="{% url 'view_cart' %}" class="col-lg-3 col-sm-6 btn btn-lg rounded-0 text-uppercase bg-white">View Cart</a>
-              <a href="#" class="col-lg-3 col-sm-6 btn btn-lg rounded-0 text-uppercase bg-green">test</a>
-              <a href="#" class="col-lg-3 col-sm-6 btn btn-lg rounded-0 text-uppercase bg-yellow">test</a>
-              <a href="#" class="col-lg-3 col-sm-6 btn btn-lg rounded-0 text-uppercase bg-red">test</a>
+              {% if request.user.is_superuser %}
+                <a href="{% url 'admin:index' %}" class="col-lg-3 col-sm-6 btn btn-lg rounded-0 text-uppercase bg-purple">Admin</a>
+              {% endif %}
+              <a href="{% url 'view_cart' %}" class="col-lg-3 col-sm-6 btn btn-lg rounded-0 text-uppercase bg-red">View Cart</a>
+              {% if request.user.is_authenticated %}
+                <a href="{% url 'profile' %}" class="col-lg-3 col-sm-6 btn btn-lg rounded-0 text-uppercase bg-green">Profile</a>
+                <a href="{% url 'account_logout' %}" class="col-lg-3 col-sm-6 btn btn-lg rounded-0 text-uppercase bg-yellow">Log Out</a>
+              {% else %}
+                <a href="{% url 'account_signup' %}" class="col-lg-3 col-sm-6 btn btn-lg rounded-0 text-uppercase bg-green">Sign Up</a>
+                <a href="{% url 'account_login' %}" class="col-lg-3 col-sm-6 btn btn-lg rounded-0 text-uppercase bg-yellow">Log In</a>
+              {% endif %}
             </div>
           </div>
         <nav class="container px-5 bg-black m-0 mw-100">
@@ -49,11 +56,36 @@
             <div class="col-4 text-center">social media goes here</div>
           </div>
         </footer>
+        {% if messages %}
+            <div id="messages-container">
+            {% for message in messages %}
+                {% if message.level is 25 %}
+                    {% include 'includes/toasts/toast_success.html' %}
+                {% elif message.level is 30 %}
+                    {% include 'includes/toasts/toast_warning.html' %}
+                {% elif message.level is 40 %}
+                    {% include 'includes/toasts/toast_error.html' %}
+                {% else %}
+                    {% include 'includes/toasts/toast_info.html' %}
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% endif %}
         {% block postJS %}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/5fab42f761.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://js.stripe.com/v3/"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.toast').toast('show');
+            });
+            // taken from https://stackoverflow.com/questions/55966195/how-to-dismiss-stacking-toasts-in-bootstrap
+            // didn't work otherwise, so thank you user madalinivascu
+            $('body').on('click','.close',function(){
+                $(this).closest('.toast').toast('hide')
+            })
+        </script>
         {% endblock %}
     </body>
 </html>

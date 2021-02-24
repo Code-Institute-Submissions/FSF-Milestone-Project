@@ -22,8 +22,8 @@
                     {{ order_form.address_line1|as_crispy_field }}
                     {{ order_form.address_line2|as_crispy_field }}
                     {{ order_form.city|as_crispy_field }}
-                    {{ order_form.postcode|as_crispy_field }}
                     {{ order_form.county|as_crispy_field }}
+                    {{ order_form.postcode|as_crispy_field }}
                     {{ order_form.country|as_crispy_field }}
                     <div class="form-check body-font form-check-inline float-right mr-0 mt-3">
                         {% if user.is_authenticated %}
