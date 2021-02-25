@@ -71,3 +71,4 @@ To that end, a higher-contrast colour palette has been chosen, in order to make 
 
 Test book image - [pixabay](https://pixabay.com/vectors/book-paper-text-textbook-tome-2026267/)
 placeholder for missing images - [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Placeholder-image.png)
+Solution to crispy forms image saving - [Stackoverflow](https://stackoverflow.com/questions/3702465/how-to-copy-inmemoryuploadedfile-object-to-disk/30195605)

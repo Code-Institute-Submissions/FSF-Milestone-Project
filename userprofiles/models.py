@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
+from django.conf import settings
 
 from django_countries.fields import CountryField
 
@@ -10,23 +11,25 @@ from decimal import Decimal
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    phone_number = models.CharField(max_length=30, blank=True, null=True)
-    first_name = models.CharField(max_length=30, blank=True, null=True)
-    second_name = models.CharField(max_length=30, blank=True, null=True)
+    display_name = models.CharField(max_length=24, default='Anonymous User')
+    avatar = models.ImageField(upload_to='user_avatars/', verbose_name="User Avatar", null=True, blank=True)
+    phone = models.CharField(max_length=30, blank=True, null=True)
     country = CountryField(blank_label="Choose Country *", blank=True, null=True)
     county = models.CharField(max_length=60, blank=True, null=True)
-    town_city = models.CharField(max_length=30, blank=True, null=True)
-    address1 = models.CharField(max_length=80, blank=True, null=True)
-    address2 = models.CharField(max_length=80, blank=True, null=True)
+    city = models.CharField(max_length=30, blank=True, null=True)
+    address_line1 = models.CharField(max_length=80, blank=True, null=True)
+    address_line2 = models.CharField(max_length=80, blank=True, null=True)
     postcode = models.CharField(max_length=20, blank=True, null=True)
-    avatar = models.ImageField(blank=True)
+    #  avatar = models.ImageField(blank=True)
 
     def __str__(self):
         return self.user.username
 
 
 class Review(models.Model):
-    posting_user = models.OneToOneField(User, on_delete=models.CASCADE)
+    posting_user = models.ForeignKey('userprofiles.UserProfile',
+                                     on_delete=models.CASCADE,
+                                     related_name='reviews')
     item = models.ForeignKey('items.Item',
                              on_delete=models.CASCADE,
                              related_name='reviews')

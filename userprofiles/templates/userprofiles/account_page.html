@@ -3,7 +3,48 @@
 {% block content %}
 <div class="row justify-content-center page-top">
     <div class="row">
-        <h2 class="title-font">Your Profile</h2>
+        <h2 class="title-font">Account Summary</h2>
+    </div>
+    <div class="userprofile-form">
+        <form class="row" action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="col-md-6 row">
+                    <fieldset>
+                        <legend class="fieldset-label">Profile</legend>
+                            <div class="profile-avatar-container">
+                                <img src="{{MEDIA_URL}}{% if profile.avatar %}{{ profile.avatar }}{% else %}Placeholder-image.png{% endif %}" alt="">
+                            </div>
+                            {{ profile_form.avatar|as_crispy_field }}
+                            {{ profile_form.display_name|as_crispy_field }}
+                            <a href="{% url 'account_change_password' %}">Change Password</a>
+                    </fieldset>
+                    <button id="submit-button" class="btn title-font">
+                        <span>Save Changes</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6 float-right">
+                <div>
+                    <fieldset>
+                        <legend>Contact Information</legend>
+                            <a href="{% url 'account_email' %}">Change Email Settings</a>
+                        {{ profile_form.phone|as_crispy_field }}
+                    </fieldset>
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>Delivery Address</legend>
+                        {{ profile_form.address_line1|as_crispy_field }}
+                        {{ profile_form.address_line2|as_crispy_field }}
+                        {{ profile_form.city|as_crispy_field }}
+                        {{ profile_form.postcode|as_crispy_field }}
+                        {{ profile_form.county|as_crispy_field }}
+                        {{ profile_form.country|as_crispy_field }}
+                    </fieldset>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
