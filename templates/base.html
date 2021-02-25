@@ -19,7 +19,7 @@
           <div class="col-4 bg-red">
             <a class="bg-red btn" href="{% url 'home' %}"><h1 class="align-middle">Morland's Bookshop</h1></a>
           </div>
-            <div class="col-4 row">
+            <div class="col-4 row justify-content-end">
               {% if request.user.is_superuser %}
                 <a href="{% url 'admin:index' %}" class="col-lg-3 col-sm-6 btn btn-lg rounded-0 text-uppercase bg-purple">Admin</a>
               {% endif %}

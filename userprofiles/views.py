@@ -50,3 +50,6 @@ def account_orders(request):
     except Exception as e:
         messages.error(request, f'|{e}| Error accessing your orders, please contact support.')
         return HttpResponse(content=e, status=400)
+
+def post_review(request):
+    return render(request, 'userprofile/user_review.html')

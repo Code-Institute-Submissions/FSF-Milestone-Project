@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import UserProfile
+from .models import UserProfile, Review
 
 
 class UserProfileForm(forms.ModelForm):
@@ -23,7 +23,7 @@ class UserProfileForm(forms.ModelForm):
             'country': 'Country',
         }
 
-        self.fields['phone'].widget.attrs['autofocus'] = True
+        self.fields['phone'].widget.attrs['autofocus'] = True  # could I use this to set css classes?
 
         for field in self.fields:
             if field != 'country' and field != 'avatar':
@@ -34,3 +34,14 @@ class UserProfileForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
                 self.fields[field].widget.attrs['class'] = 'text-input-field mb-3'
                 self.fields[field].label = False
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        exclude = ('posting_user', 'item',)
+    
+    def __init__(self, *args, **kwargs):
+        super(ReviewForm, self).__init__(*args, **kwargs)
+
+        self.fields['content'].widget.attrs['autofocus']=True

@@ -1,25 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.conf import settings
 
 from django_countries.fields import CountryField
-
-from decimal import Decimal
 
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     display_name = models.CharField(max_length=24, default='Anonymous User')
-    avatar = models.ImageField(upload_to='user_avatars/', verbose_name="User Avatar", null=True, blank=True)
-    phone = models.CharField(max_length=30, blank=True, null=True)
-    country = CountryField(blank_label="Choose Country *", blank=True, null=True)
-    county = models.CharField(max_length=60, blank=True, null=True)
-    city = models.CharField(max_length=30, blank=True, null=True)
-    address_line1 = models.CharField(max_length=80, blank=True, null=True)
-    address_line2 = models.CharField(max_length=80, blank=True, null=True)
-    postcode = models.CharField(max_length=20, blank=True, null=True)
+    avatar = models.ImageField(upload_to='user_avatars/',
+                               verbose_name="User Avatar",
+                               blank=True)
+    phone = models.CharField(max_length=30, blank=True)
+    country = CountryField(blank_label="Choose Country *", blank=True)
+    county = models.CharField(max_length=60, blank=True)
+    city = models.CharField(max_length=30, blank=True)
+    address_line1 = models.CharField(max_length=80, blank=True)
+    address_line2 = models.CharField(max_length=80, blank=True)
+    postcode = models.CharField(max_length=20, blank=True)
     #  avatar = models.ImageField(blank=True)
 
     def __str__(self):
@@ -35,8 +34,7 @@ class Review(models.Model):
                              related_name='reviews')
     content = models.TextField()
     score = models.DecimalField(max_digits=2,
-                                decimal_places=1, null=True,
-                                blank=True, default=0)
+                                decimal_places=1, default=0)
 
     def save(self, *args, **kwargs):
         target_item = self.item

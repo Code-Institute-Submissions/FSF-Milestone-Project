@@ -67,6 +67,32 @@ To that end, a higher-contrast colour palette has been chosen, in order to make 
 
 ![Color Palette Swatch](designs/fsfpalette.png)
 
+## Features
+
+## Technologies Used
+
+### Code Validation
+
+#### Python
+
+#### Javascript
+
+#### HTML
+
+#### CSS
+
+
+## Testing
+
+
+### User Story Testing
+
+### Interesting Bugs & Known Issues
+
+
+## Deployment
+
+
 ### Credits
 
 Test book image - [pixabay](https://pixabay.com/vectors/book-paper-text-textbook-tome-2026267/)

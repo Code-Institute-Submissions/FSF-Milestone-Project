@@ -47,13 +47,14 @@ html, body{
 
 
 /* positionings */
-.page-top{
-    padding:30px 15px 0 15px;
+.universal-padding{
+    padding:5vh 5vw 0;
 }
 
-/* item page - will seperate into own file when refactoring */
-.item-page-image{
-    max-width: 20vw;
+/* universal sizings */
+.image-30{
+    max-width: 30vw;
+    max-height: 30vh;
 }
 
 /* forms */

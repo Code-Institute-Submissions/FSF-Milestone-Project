@@ -1,16 +1,16 @@
-<div class="card col-lg-2">
+<div class="card col-lg-2 p-4">
     <div>
         <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="card-img-top img-thumbnail">
         <div class="card-body">
             <h4 class="card-title title-font">{{item.name}}</h4>
             <h5 class="card-text body-font">
                 {% if item.sale_price %}
-                    {{item.sale_price}}
+                    £{{item.sale_price}}
                 {% else %}
-                    {{item.base_price}}
+                    £{{item.base_price}}
                 {% endif %}
             </h5>
         </div>
-        <a href="{% url 'item_page' item.id %}" class="btn btn-primary title-font">View Item</a>
+        <a href="{% url 'item_page' item.id %}" class="btn title-font">View Item</a>
     </div>
 </div>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <div class="row justify-content-around page-top">
+    <div class="row justify-content-around universal-padding">
         <div class="row">
             <h2 class="title-font">{{item.name}}</h2>
         </div>
@@ -49,8 +49,8 @@
             </form>
         </div>
     </div>
-    <div class="row body-font">
-        <p>
+    <div class="row body-font universal-padding">
+        <p class="col-11">
             {{item.description}}
         </p>
     </div>
