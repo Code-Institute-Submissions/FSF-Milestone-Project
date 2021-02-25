@@ -26,9 +26,10 @@ def account_page(request):
             }
             profile.avatar.save(request.FILES['avatar'].name, request.FILES['avatar'])
         else:
-            if 'avatar' in request.POST:
-                if request.POST['avatar']:
+            if 'avatar-clear' in request.POST:
+                if request.POST['avatar-clear']:
                     profile.avatar.delete()
+                    profile.save()
             form_data = {
                 'display_name': request.POST['display_name'],
                 'phone': request.POST['phone'],
