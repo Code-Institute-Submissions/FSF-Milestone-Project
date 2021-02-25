@@ -7,7 +7,7 @@ from django_countries.fields import CountryField
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="userprofile")
     display_name = models.CharField(max_length=24, default='Anonymous User')
     avatar = models.ImageField(upload_to='user_avatars/',
                                verbose_name="User Avatar",
@@ -19,7 +19,6 @@ class UserProfile(models.Model):
     address_line1 = models.CharField(max_length=80, blank=True)
     address_line2 = models.CharField(max_length=80, blank=True)
     postcode = models.CharField(max_length=20, blank=True)
-    #  avatar = models.ImageField(blank=True)
 
     def __str__(self):
         return self.user.username
@@ -63,7 +62,6 @@ class Review(models.Model):
         target_item = self.item
         existing_reviews = target_item.reviews.all()
         other_count = existing_reviews.count() - 1
-        print(other_count)
         if other_count > 0:
 
             sum_score = 0

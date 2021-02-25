@@ -6,8 +6,8 @@ from decimal import Decimal
 from django.db import models
 from django.db.models import Sum
 from django_countries.fields import CountryField
+from django.contrib.auth.models import User
 
-from userprofiles.models import UserProfile
 from items.models import Item
 
 
@@ -15,8 +15,8 @@ from items.models import Item
 # Create your models here.
 class Order(models.Model):
     order_no = models.CharField(max_length=32, editable=False)
-    user = models.ForeignKey('userprofiles.UserProfile',
-                             on_delete=models.SET_NULL,
+    user = models.ForeignKey(User,
+                             on_delete=models.SET_NULL, blank=True,
                              null=True, related_name='orders')
     full_name = models.CharField(max_length=30, blank=False)
     email = models.EmailField(max_length=30, blank=False)

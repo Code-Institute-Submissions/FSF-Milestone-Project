@@ -1,34 +1,59 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.contrib import messages
-from django.core.files.storage import default_storage
-from django.core.files.base import ContentFile
-from django.conf import settings
 
 from .models import UserProfile
 from .forms import UserProfileForm
+
+from checkout.models import Order
 
 
 def account_page(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     profile_form = UserProfileForm(instance=profile)
     if request.method == 'POST':
-        form_data = {
-            'avatar': request.FILES['avatar'],
-            'display_name': request.POST['display_name'],
-            'phone': request.POST['phone'],
-            'address_line1': request.POST['address_line1'],
-            'address_line2': request.POST['address_line2'],
-            'city': request.POST['city'],
-            'county': request.POST['county'],
-            'postcode': request.POST['postcode'],
-            'country': request.POST['country'],
-        }
+        if request.FILES:
+            form_data = {
+                'user': request.user,
+                'avatar': request.FILES['avatar'],
+                'display_name': request.POST['display_name'],
+                'phone': request.POST['phone'],
+                'address_line1': request.POST['address_line1'],
+                'address_line2': request.POST['address_line2'],
+                'city': request.POST['city'],
+                'county': request.POST['county'],
+                'postcode': request.POST['postcode'],
+                'country': request.POST['country'],
+            }
+            profile.avatar.save(request.FILES['avatar'].name, request.FILES['avatar'])
+        else:
+            if 'avatar' in request.POST:
+                if request.POST['avatar']:
+                    profile.avatar.delete()
+            form_data = {
+                'display_name': request.POST['display_name'],
+                'phone': request.POST['phone'],
+                'address_line1': request.POST['address_line1'],
+                'address_line2': request.POST['address_line2'],
+                'city': request.POST['city'],
+                'county': request.POST['county'],
+                'postcode': request.POST['postcode'],
+                'country': request.POST['country'],
+            }
         profile_form = UserProfileForm(form_data)
         if profile_form.is_valid():
-            profile.avatar.save(request.FILES['avatar'].name, request.FILES['avatar'])
-            profile = profile.save()
+            profile.display_name = form_data['display_name']
+            profile.phone = form_data['phone']
+            profile.address_line1 = form_data['address_line1']
+            profile.address_line2 = form_data['address_line2']
+            profile.city = form_data['city']
+            profile.county = form_data['county']
+            profile.postcode = form_data['postcode']
+            profile.country = form_data['country']
+            profile.save()
+            messages.info(request, "Your profile was successfully updated.")
 
     context = {
+        'avatar': profile.avatar,
         'profile': profile,
         'profile_form': profile_form,
     }
@@ -38,18 +63,15 @@ def account_page(request):
 
 def account_orders(request):
     try:
-        profile = get_object_or_404(UserProfile, user=request.user)
-        orders = profile.orders.all()
-        reviews = profile.reviews.all()
-
+        orders = Order.objects.filter(user=request.user)
         context = {
             'orders': orders,
-            'reviews': reviews,
         }
         return render(request, 'userprofiles/account_orders.html', context)
     except Exception as e:
         messages.error(request, f'|{e}| Error accessing your orders, please contact support.')
         return HttpResponse(content=e, status=400)
+
 
 def post_review(request):
     return render(request, 'userprofile/user_review.html')

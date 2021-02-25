@@ -13,7 +13,7 @@
                     <fieldset>
                         <legend class="fieldset-label">Profile</legend>
                             <div class="profile-avatar-container">
-                                <img src="{{MEDIA_URL}}{% if profile.avatar %}{{ profile.avatar }}{% else %}Placeholder-image.png{% endif %}" alt="User Avatar" class="image-30">
+                                <img src="{{MEDIA_URL}}{% if profile.avatar %}{{ avatar }}{% else %}Placeholder-image.png{% endif %}" alt="User Avatar" class="image-30">
                             </div>
                             {{ profile_form.avatar|as_crispy_field }}
                             {{ profile_form.display_name|as_crispy_field }}
@@ -22,6 +22,8 @@
                     <button id="submit-button" class="btn title-font">
                         <span>Save Changes</span>
                     </button>
+
+                    <a href="{% url 'profile_orders'  %}" class="btn bg-green">Your Orders</a>
                 </div>
             </div>
             <div class="col-md-6 float-right">

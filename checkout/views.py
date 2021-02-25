@@ -7,6 +7,7 @@ from items.models import Item
 from .models import Order, OrderItem
 from .forms import OrderForm
 from cart.context import cart_contents
+from userprofiles.models import UserProfile
 
 import stripe
 import json
@@ -49,6 +50,8 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
+            if request.user.is_authenticated:
+                order.user = request.user
             order.stripe_pid = request.POST.get('client_secret').split('_secret')[0]
             order.save()
             for item_id, item_data in cart.items():
@@ -74,8 +77,18 @@ def checkout(request):
             amount=stripe_total,
             currency=settings.STRIPE_CURRENCY
         )
-
-        order_form = OrderForm()
+        profile = get_object_or_404(UserProfile, user=request.user)
+        form_data = {
+            'email': request.user.email,
+            'phone': profile.phone,
+            'address_line1': profile.address_line1,
+            'address_line2': profile.address_line2,
+            'city': profile.city,
+            'county': profile.county,
+            'postcode': profile.postcode,
+            'country': profile.country,
+        }
+        order_form = OrderForm(form_data)
 
     template = "checkout/checkout.html"
     context = {
@@ -96,6 +109,17 @@ def success(request, order_no):
                                 Your order number is:{order.order_no}')
     if 'cart' in request.session:
         del request.session['cart']
+
+    if save_info is True:
+        saveprofile = get_object_or_404(UserProfile, user=request.user)
+        saveprofile.phone = order.phone
+        saveprofile.country = order.country
+        saveprofile.city = order.city
+        saveprofile.address_line1 = order.address_line1
+        saveprofile.address_line2 = order.address_line2
+        saveprofile.postcode = order.postcode
+        saveprofile.county = order.county
+        saveprofile.save()
 
     context = {
         'order': order

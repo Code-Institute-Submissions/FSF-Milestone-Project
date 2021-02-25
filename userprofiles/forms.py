@@ -40,8 +40,8 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         exclude = ('posting_user', 'item',)
-    
+
     def __init__(self, *args, **kwargs):
         super(ReviewForm, self).__init__(*args, **kwargs)
-
-        self.fields['content'].widget.attrs['autofocus']=True
+        
+        self.fields['content'].widget.attrs['autofocus'] = True
