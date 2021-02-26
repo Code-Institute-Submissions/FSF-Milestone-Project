@@ -7,7 +7,7 @@
   </div>
   <div class="toast-body">
       {% if cart_items %}
-      <span class="bg-black row">{{ message }}</span>
+      <div class="row pb-4">{{ message }}<br></div>
             {% for entry in cart_items %}
                 {% with entry.item as item %}
                     <div class="row justify-content-between">
@@ -42,7 +42,6 @@
                     <a href="{% url 'checkout' %}" class="btn bg-green">Buy Now</a>
                 </div>                        
             </div>
-        
         {% else %}
             {{ message }}
         {% endif %}

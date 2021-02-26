@@ -1,6 +1,6 @@
 <div class="card col-lg-2 p-4 m-2">
     <div>
-        <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="card-img-top img-thumbnail">
+        <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="card-img-top item-order-image">
         <div class="card-body">
             <h4 class="card-title title-font">{{item.name}}</h4>
             <h5 class="card-text body-font">

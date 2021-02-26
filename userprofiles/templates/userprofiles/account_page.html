@@ -19,11 +19,9 @@
                             {{ profile_form.display_name|as_crispy_field }}
                             <a href="{% url 'account_change_password' %}">Change Password</a>
                     </fieldset>
-                    <button id="submit-button" class="btn title-font">
-                        <span>Save Changes</span>
-                    </button>
+                    
 
-                    <a href="{% url 'profile_orders'  %}" class="btn bg-green">Your Orders</a>
+                    <a href="{% url 'profile_orders'  %}" class="btn bg-yellow m-5">Your Orders</a>
                 </div>
             </div>
             <div class="col-md-6 float-right">
@@ -45,6 +43,9 @@
                         {{ profile_form.country|as_crispy_field }}
                     </fieldset>
                 </div>
+                <button id="submit-button" class="btn mt-4 bg-green title-font">
+                        <span>Save Changes</span>
+                </button>
             </div>
         </form>
     </div>

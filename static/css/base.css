@@ -45,6 +45,9 @@ html, body{
     font-family: 'Open Sans', sans-serif;
 }
 
+.title-sub{
+    font-size:1rem;
+}
 
 /* positionings */
 .universal-padding{
@@ -60,6 +63,10 @@ html, body{
 .item-order-image{
     max-width: 10vh;
     max-height: 10vh;
+}
+
+.w-10{
+    max-width:10vw;
 }
 
 /* item search */

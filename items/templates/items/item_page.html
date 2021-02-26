@@ -6,9 +6,10 @@
             <h2 class="title-font">{{item.name}}</h2>
         </div>
         <div class="col-sm-3 m-auto">
-            <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="item-page-image">
+            <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="image-30">
         </div>
         <div class="col-sm-5 title-font">
+            Rating: {{item.average_rating}}/5<br>
             <strong>£
                 {% if item.sale_price %}
                     {{item.sale_price}}
@@ -51,8 +52,28 @@
     </div>
     <div class="row body-font universal-padding">
         <p class="col-11">
+            <h2 class="title-font">
+                Description
+            </h2>
             {{item.description}}
         </p>
+    </div>
+    <div class="row body-font universal-padding">
+        <h2 class="title-font">
+            Reviews
+        </h2>
+        {% if reviews %}
+            {% for review in reviews %}
+            <hr>
+            <div class="row mx-3">
+                <h4 class="title-font">{{review.user}}</h4>
+                <p>{{review.score}}/5</p>
+                <p>{{review.content}}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            No reviews yet!
+        {% endif %}
     </div>
 {% endblock %}
 {% block postJS %}

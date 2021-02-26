@@ -44,7 +44,7 @@ class Item(models.Model):
         self.average_rating = score
         self.save()
 
-    def __del__(self, *args, **kwargs):
+    def __delete__(self, *args, **kwargs):
         self.image.delete()
         super(Item, self).delete(*args, **kwargs)
 
