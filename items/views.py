@@ -8,14 +8,20 @@ def search(request):
     # adapted from the django tutorials
     items = Item.objects.all()
     categories = None
+    search = None
     if request.GET:
         if request.GET.get('category'):
             categories = request.GET['category'].split(',')
             items = items.filter(category__internal_name__in=categories)
             categories = Category.objects.filter(internal_name__in=categories)
-
+        if request.GET.get('search'):
+            search = request.GET['search']
+            items = items.filter(name__icontains=search)
+        if request.GET.get('sort'):
+            items = items.objects.order_by(request.GET['sort'])
     context = {
         'items': items,
+        'search': search,
         'category': categories,
     }
 
