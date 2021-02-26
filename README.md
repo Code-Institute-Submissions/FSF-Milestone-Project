@@ -128,7 +128,15 @@ As far as i can tell, this has something to do with stripe reading the model dat
 
 ## Deployment
 
-In order to deploy this to heroku, I had to 
+In order to deploy this to heroku, I had to set up amazon web service stuff, specifically a server for the static & media files to exist on.
+This was quite a process. It needed me to setup an AWS account, setup the bucket, get the s3 stuff sorted, then finally add the env variables, and call it with Boto3 & gunicorn to ensure that it could be called properly for storing files.
+
+Then, I needed to setup the gmail app connection, which was far simpler. though in my fatigued and stressed-out state I made more than a few typos in entering it all.
+
+Finally, I simply needed to point heroku at this git repository, add the remaining environment variables and set up automatic deployment.
+
+There was one persistent issue, that I have no idea if I can even fix. Heroku seems set on using the variable name 'EMAIL_HOST_USERNAME', one of the previous typos, instead of 'EMAIL_HOST_USER', which is actually what settings.py shows.
+I hope to have this finished in this final deployment, but I honestly couldn't figure out what was causing it.
 
 ### Credits
 
