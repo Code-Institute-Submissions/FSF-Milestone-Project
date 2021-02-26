@@ -36,6 +36,7 @@ class Review(models.Model):
                                 decimal_places=1, default=0)
 
     def save(self, *args, **kwargs):
+        super(Review, self).save(*args, **kwargs)
         target_item = self.item
         existing_reviews = target_item.reviews.all()
         other_count = existing_reviews.count()
@@ -56,7 +57,7 @@ class Review(models.Model):
         else:
             target_item.update_score(self.score)
 
-        super(Review, self).save(*args, **kwargs)
+        
 
     def delete(self, *args, **kwargs):
         target_item = self.item

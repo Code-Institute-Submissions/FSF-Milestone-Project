@@ -43,5 +43,7 @@ class ReviewForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ReviewForm, self).__init__(*args, **kwargs)
-        
+
+        self.fields['score'].widget.attrs['min'] = 0.0
+        self.fields['score'].widget.attrs['max'] = 5.0
         self.fields['content'].widget.attrs['autofocus'] = True

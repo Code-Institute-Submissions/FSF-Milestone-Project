@@ -6,7 +6,8 @@
         <h4 class="title-font">Your Review of {{item.name}}</h4>
     </div>
     <div class="row form-body">
-        <form>
+        <form action="{% url 'review' item.id %}" method="POST">
+            {% csrf_token %}
             <div class="row">
                 <p class="col-1">
                     {{review_form.score|as_crispy_field}}

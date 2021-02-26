@@ -95,14 +95,16 @@ def post_review(request, item_ID):
 
     if request.method == 'POST':
         form_data = {
-            'user': request.user,
-            'item': item,
             'content': request.POST['content'],
             'score': request.POST['score'],
         }
         review_form = ReviewForm(form_data)
-        review_form.save()
-
+        review = review_form.save(commit=False)
+        # setting these here, form_data was only getting __str__ return.
+        review.item = item
+        review.user = request.user
+        review.save()
+        messages.info(request, f'Your review for {item} was successfully posted.')
     context = {
         'review_form': review_form,
         'item': item,
