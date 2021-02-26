@@ -109,16 +109,26 @@ As little time as I have had, I still took it upon myself to ensure functionalit
 
 With this in mind, here are my assessments of the user stories and their various states of completion.
 
+[User Story Spreadsheet](designs/fsf_userstories_v1-implementation.xlsx)
+
+So, while the vast majority of user stories have been implemented, this does not mean the website is entirely feature complete.
+
+The mobile scaling is virtually non-existant, as the time for that was lost during aforementioned stress-related issues.
+Additionally, the visuals as a whole could do with several more passes as the entire site is somewhat bland and lacks any real distinction.
+Finally, The pages rarely live up to the design works, and could do with additonal work to bring them more in line with those and each other.
+
+All in all, I'm a little surprised I managed to get even this submitted, given the difficulties I had during development. Despite that, I am not entirely satisfied with the current state of the site, but it is what it is.
+
+#### Known Bugs
+
+Aside from the previously talked-about mobile scaling issues, one persistent odd issue cropped up during development.
+
+In the account page, when setting a new avatar, the image file for it will update, but the stripe forms for this will not.
+As far as i can tell, this has something to do with stripe reading the model data before the image has finished uploading. This could possibly be fixed by altering the view, adding an additional page in the interim so that the user is not returned to the page before the image is finished uploading.
+
 ## Deployment
 
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
-
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
-- Different values for environment variables (Heroku Config Vars)?
-- Different configuration files?
-- Separate git branch?
-
-In addition, if it is not obvious, you should also describe how to run your code locally.
+In order to deploy this to heroku, I had to 
 
 ### Credits
 
