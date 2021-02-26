@@ -68,27 +68,39 @@ To that end, a higher-contrast colour palette has been chosen, in order to make 
 ![Color Palette Swatch](designs/fsfpalette.png)
 
 ## Features
-
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
  
 ### Existing Features
-- Feature 1 - allows users X to achieve Y, by having them fill out Z
-- ...
 
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
+- User profile avatar uploading
+- Item browsing, filtering and searching
+- Items can be added to cart, taken to checkout, and purchased
+- User can view their Orders
+- User can post reviews of items they have purchased.
+- Items show these reviews on their respective pages, along with an aggregated average score.
 
 ### Features Left to Implement
-- Another feature idea
+Due to time & knowledge constraints, I was forced to cut a few features. 
+
+First amoungst these was the auction feature, as it would have dramatically increased development time due to the number of email calls and time-based methods it would require.
+
+Secondly The styling had to be cut back due to time, as I lost a great deal due to stress-related issues.
+
+Finally, The website looks awful on mobile and does not work well. Sadly, I was not able to get mobile styling done in time for this, for the same reason as before.
 
 ## Technologies Used
 
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
-
+- [Django](https://www.djangoproject.com/)
+    - The project uses **Django** to simplify website creation and development.
+- [Bootstrap](https://getbootstrap.com/)
+    - The project uses **Bootstrap** to provide styling and layout to pages.
 - [JQuery](https://jquery.com)
     - The project uses **JQuery** to simplify DOM manipulation.
-
+- [Fontawesome](https://fontawesome.com/)
+    - The project uses **Fontawesome** to provide icons.
+- [GoogleFonts](https://fonts.google.com/)
+    - The project uses **GoogleFonts** to provide different text fonts.
+- [Stripe](https://stripe.com/)
+    - The project uses **Stripe** for financial services and checkout.
 
 ## Testing
 
