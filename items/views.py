@@ -18,7 +18,7 @@ def search(request):
             search = request.GET['search']
             items = items.filter(name__icontains=search)
         if request.GET.get('sort'):
-            items = items.objects.order_by(request.GET['sort'])
+            items = items.order_by(request.GET['sort'])
     context = {
         'items': items,
         'search': search,
