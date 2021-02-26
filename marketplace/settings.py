@@ -182,7 +182,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # all taken from codeinstitute tutorials
 if 'USE_AWS' in os.environ:
     AWS_S3_OBJECT_PARAMETERS = {
-        'Expires': 'Thus, 31 Dec 2099 20:00:00 GMT',
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
         'CacheControl': 'max-age=94600000'
     }
     AWS_STORAGE_BUCKET_NAME = os.environ.get("STORAGE_BUCKET_NAME")
