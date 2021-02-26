@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'fsf-project.herokuapp.com']
 
 
 # Application definition
@@ -119,9 +119,18 @@ WSGI_APPLICATION = 'marketplace.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#  'default': {
+#      'ENGINE': 'django.db.backends.sqlite3',
+#       'NAME': BASE_DIR / 'db.sqlite3',
+#   }
+# }
+
+
 DATABASES = {
-    "default":dj_database_url.parse('postgres://qrtzadjjvurwzg:fc5a04efe231dd86f796217110f8e124e2bcf3e474d1e8424c2c0c79a853d1bc@ec2-108-128-104-50.eu-west-1.compute.amazonaws.com:5432/d8bkgjb40skk05')
+    "default": dj_database_url.parse(os.getenv('DATABASE_URL'))
 }
+
 
 
 # Password validation
