@@ -13,7 +13,12 @@ import os
 import dj_database_url
 from pathlib import Path
 
+# all taken from codeinstitute tutorials
 if 'USE_AWS' in os.environ:
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thus, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94600000'
+    }
     AWS_STORAGE_BUCKET_NAME = os.getenv("STORAGE_BUCKET_NAME")
     AWS_S3_REGION_NAME = os.getenv('S3_REGION_NAME')
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
