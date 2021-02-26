@@ -143,3 +143,16 @@ I hope to have this finished in this final deployment, but I honestly couldn't f
 Test book image - [pixabay](https://pixabay.com/vectors/book-paper-text-textbook-tome-2026267/)
 placeholder for missing images - [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Placeholder-image.png)
 Solution to crispy forms image saving - [Stackoverflow](https://stackoverflow.com/questions/3702465/how-to-copy-inmemoryuploadedfile-object-to-disk/30195605)
+
+book images from:
+https://commons.wikimedia.org/wiki/File:Empty_book.jpg
+https://www.flickr.com/photos/alexbrn/4631428861
+https://pxhere.com/en/photo/1600395
+https://pixabay.com/illustrations/book-open-pages-chapters-open-book-5626484/
+https://commons.wikimedia.org/wiki/File:BLW_Manuscript_Book_of_Hours,_about_1480-90.jpg
+https://pxhere.com/en/photo/1606892
+https://talkinghumanities.blogs.sas.ac.uk/2020/02/20/the-university-of-londons-oldest-printed-book-turns-550/
+https://commons.wikimedia.org/wiki/File:A_book.jpg
+https://pixabay.com/illustrations/book-open-pages-chapters-open-book-5626484/
+https://www.geograph.org.uk/photo/1538547
+https://torange.biz/ancient-book-notes-43336
