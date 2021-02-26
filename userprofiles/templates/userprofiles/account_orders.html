@@ -1,14 +1,42 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="row justify-content-center page-top">
+<div class="row justify-content-center universal-padding">
     <div class="row">
         <h2 class="title-font">Your Orders</h2>
     </div>
-    <div class="row orders-container">
+    <div class="row border rounded orders-container">
         {% for order in orders %}
-            <div class="row">
-                    this is a template test
+            <div class="row border-bottom order-container">
+                <div class="order-header border-bottom row">
+                    <p class="col-6">Order Number: {{order.order_no}}</p>
+                    <p class="col-6">Order Date: {{order.date}}</p>
+                </div>
+                <div class="order-body">
+                    {% for order_item in order.order_items.all %}
+                        <div class="row order-item-small">
+                            <div class="col row">
+                                <img src="{{MEDIA_URL}}{% if order_item.item.image %}{{ order_item.item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ order_item.item.name }}" class="col-6 item-order-image">
+                                <p class="col-6">{{order_item.item.name}}</p>
+                            </div>
+                            <div class="col">
+                                <p>{{order_item.quantity}}</p>
+                            </div>
+                            <div class="col">
+                                <p>{{order_item.order_item_total}}</p>
+                            </div>
+                            <div class="col">
+                                {% if order_item.item in reviewed %}
+                                    You already reviewed this, <a href="{% url 'review' order_item.item.id %}">edit your review</a>?
+                                {% else %}
+                                    <a href="{% url 'review' order_item.item.id %}">Review This Item</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="order-footer row">
+                </div>
             </div>
         {% endfor %}
     </div>

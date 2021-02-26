@@ -53,8 +53,13 @@ html, body{
 
 /* universal sizings */
 .image-30{
-    max-width: 30vw;
+    max-width: 30vh;
     max-height: 30vh;
+}
+
+.item-order-image{
+    max-width: 10vh;
+    max-height: 10vh;
 }
 
 /* forms */

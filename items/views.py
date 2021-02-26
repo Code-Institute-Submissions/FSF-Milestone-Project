@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Item, Category
+from userprofiles.models import Review
 # Create your views here.
 
 
@@ -24,9 +25,11 @@ def search(request):
 def item_page(request, item_ID):
 
     item = get_object_or_404(Item, pk=item_ID)
+    reviews = Review.objects.filter(item=item)
 
     context = {
         'item': item,
+        'reviews': reviews,
     }
 
     return render(request, 'items/item_page.html', context)

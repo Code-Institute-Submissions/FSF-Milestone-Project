@@ -39,7 +39,7 @@ class UserProfileForm(forms.ModelForm):
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        exclude = ('posting_user', 'item',)
+        exclude = ('user', 'item',)
 
     def __init__(self, *args, **kwargs):
         super(ReviewForm, self).__init__(*args, **kwargs)

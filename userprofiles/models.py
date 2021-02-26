@@ -11,23 +11,23 @@ class UserProfile(models.Model):
     display_name = models.CharField(max_length=24, default='Anonymous User')
     avatar = models.ImageField(upload_to='user_avatars/',
                                verbose_name="User Avatar",
-                               blank=True)
-    phone = models.CharField(max_length=30, blank=True)
-    country = CountryField(blank_label="Choose Country *", blank=True)
-    county = models.CharField(max_length=60, blank=True)
-    city = models.CharField(max_length=30, blank=True)
-    address_line1 = models.CharField(max_length=80, blank=True)
-    address_line2 = models.CharField(max_length=80, blank=True)
-    postcode = models.CharField(max_length=20, blank=True)
+                               blank=True, null=True)
+    phone = models.CharField(max_length=30, blank=True, null=True)
+    country = CountryField(blank_label="Choose Country *", blank=True, null=True)
+    county = models.CharField(max_length=60, blank=True, null=True)
+    city = models.CharField(max_length=30, blank=True, null=True)
+    address_line1 = models.CharField(max_length=80, blank=True, null=True)
+    address_line2 = models.CharField(max_length=80, blank=True, null=True)
+    postcode = models.CharField(max_length=20, blank=True, null=True)
 
     def __str__(self):
         return self.user.username
 
 
 class Review(models.Model):
-    posting_user = models.ForeignKey('userprofiles.UserProfile',
-                                     on_delete=models.CASCADE,
-                                     related_name='reviews')
+    user = models.ForeignKey(User,
+                             on_delete=models.CASCADE,
+                             related_name='reviews', null=True)
     item = models.ForeignKey('items.Item',
                              on_delete=models.CASCADE,
                              related_name='reviews')
@@ -77,7 +77,7 @@ class Review(models.Model):
         super(Review, self).delete(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.posting_user.username}'s review of {self.item.name}"
+        return f"{self.user}'s review of {self.item.name}"
 
 
 # user profile signal, no need for a file if it's just the one.

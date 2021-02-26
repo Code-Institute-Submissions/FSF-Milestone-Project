@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404, HttpResponse
 from django.contrib import messages
 
-from .models import UserProfile
-from .forms import UserProfileForm
+from .models import UserProfile, Review
+from items.models import Item
+from .forms import UserProfileForm, ReviewForm
 
 from checkout.models import Order
 
@@ -65,8 +66,13 @@ def account_page(request):
 def account_orders(request):
     try:
         orders = Order.objects.filter(user=request.user)
+        reviews = Review.objects.filter(user=request.user)
+        reviewed_items = []
+        for review in reviews:
+            reviewed_items.append(review.item)
         context = {
             'orders': orders,
+            'reviewed': reviewed_items,
         }
         return render(request, 'userprofiles/account_orders.html', context)
     except Exception as e:
@@ -74,5 +80,32 @@ def account_orders(request):
         return HttpResponse(content=e, status=400)
 
 
-def post_review(request):
-    return render(request, 'userprofile/user_review.html')
+def post_review(request, item_ID):
+    item = get_object_or_404(Item, pk=item_ID)
+    reviews = Review.objects.filter(user=request.user)
+    old_review = None
+    for review in reviews:
+        if review.item == item:
+            old_review = review
+
+    if old_review:
+        review_form = ReviewForm(instance=old_review)
+    else:
+        review_form = ReviewForm()
+
+    if request.method == 'POST':
+        form_data = {
+            'user': request.user,
+            'item': item,
+            'content': request.POST['content'],
+            'score': request.POST['score'],
+        }
+        review_form = ReviewForm(form_data)
+        review_form.save()
+
+    context = {
+        'review_form': review_form,
+        'item': item,
+    }
+
+    return render(request, 'userprofiles/user_review.html', context)

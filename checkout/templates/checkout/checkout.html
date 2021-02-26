@@ -63,7 +63,7 @@
                 {% with entry.item as item %}
                     <div class="row justify-content-between">
                         <div class="col-3">
-                            <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="col-sm-5 item-image">
+                            <img src="{{MEDIA_URL}}{% if item.image %}{{ item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ item.name }}" class="col-sm-5 item-order-image">
                         </div>
                         <div class="col-3 title-font">
                             <strong>{{item.name}}</strong>

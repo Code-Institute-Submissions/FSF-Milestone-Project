@@ -1,5 +1,24 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
+<div class="universal-padding">
+    <div class="row">
+        <h4 class="title-font">Your Review of {{item.name}}</h4>
+    </div>
+    <div class="row form-body">
+        <form>
+            <div class="row">
+                <p class="col-1">
+                    {{review_form.score|as_crispy_field}}
+                </p>
+            </div>
+            <div class="row">
+                {{review_form.content|as_crispy_field}}
+            </div>
+            <button id="submit-button" class="btn title-font">
+                <span>Post Review</span>
+            </button>
+        </form>
+    </div>
+</div>
 {% endblock %}

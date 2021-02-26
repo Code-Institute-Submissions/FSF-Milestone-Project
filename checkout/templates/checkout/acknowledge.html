@@ -32,7 +32,7 @@
                     {% for orderitem in order.order_items.all %}
                             <div class="row justify-content-between">
                                 <div class="col-3">
-                                    <img src="{{MEDIA_URL}}{% if orderitem.item.image %}{{ orderitem.item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ orderitem.item.name }}" class="col-sm-5 item-image">
+                                    <img src="{{MEDIA_URL}}{% if orderitem.item.image %}{{ orderitem.item.image }}{% else %}Placeholder-image.png{% endif %}" alt="image of {{ orderitem.item.name }}" class="col-sm-5 item-order-image">
                                 </div>
                                 <div class="col-3 title-font">
                                     <strong>{{orderitem.item.name}}</strong>
